@@ -1,0 +1,101 @@
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    min-height: 37vh;
+    padding: 20px;
+}
+
+.project-card {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.project-card .project-details {
+    padding: 20px;
+}
+
+.project-card .project-details .project-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #108ee9;
+    margin-bottom: 10px;
+}
+
+.project-card .project-details .project-description {
+    margin-bottom: 10px;
+}
+
+.project-card .project-details .project-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.project-card .project-details .project-info .info-row {
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.project-card .project-details .project-info .info-row .info-label {
+    font-weight: 600; /* Changed from 10px to 600 for font weight */
+    margin-right: 5px;
+}
+
+.project-card .project-details .project-info .info-row .info-value {
+    font-weight: bold;
+}
+
+.project-card .project-details .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.project-card .project-details .actions .view-button,
+.project-card .project-details .actions .update-button {
+    margin-right: 10px;
+}
+
+.card-container {
+    margin: 16px;
+    max-width: 40%;
+    padding-bottom: 30px;
+}
+
+mat-card {
+    padding: 10px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+mat-card-content {
+    margin-top: 10px;
+}
+
+mat-card-footer {
+    margin-left: 20px;
+}
+
+.img {
+    object-fit: cover;
+}
+
+.comment-card {
+    margin-top: 20px;
+}
+
+
+mat-form-field {
+    width: 100%;
+}
+
+
