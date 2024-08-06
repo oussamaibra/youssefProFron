@@ -53,8 +53,9 @@
                 cdkDropList
                 #todoList1="cdkDropList"
                 [cdkDropListData]="tasks"
-                [cdkDropListConnectedTo]="[todoList2,todoList3]"
+                [cdkDropListConnectedTo]="[todoList2, todoList3]"
                 class="example-list"
+                id="cdk-drop-list-0"
                 (cdkDropListDropped)="drop($event)"
               >
                 @for (item of tasks; track $index) {
@@ -91,9 +92,10 @@
               </h2>
               <div
                 cdkDropList
+                id="cdk-drop-list-1"
                 #todoList2="cdkDropList"
                 [cdkDropListData]="inprogress"
-                [cdkDropListConnectedTo]="[todoList3,todoList1]"
+                [cdkDropListConnectedTo]="[todoList3, todoList1]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)"
               >
@@ -124,9 +126,10 @@
               </h2>
               <div
                 cdkDropList
+                id="cdk-drop-list-2"
                 #todoList3="cdkDropList"
                 [cdkDropListData]="done"
-                [cdkDropListConnectedTo]="[todoList2,todoList1]"
+                [cdkDropListConnectedTo]="[todoList2, todoList1]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)"
               >

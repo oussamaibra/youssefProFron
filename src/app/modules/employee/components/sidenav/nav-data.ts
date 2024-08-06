@@ -14,4 +14,10 @@ export const navbarData = [
     icon : ' fal fa-file',
     label: 'Lists'
 }
+,
+{
+    routeLink : '/chat',
+    icon : ' fal fa-comments',
+    label: 'chat'
+}
 ];

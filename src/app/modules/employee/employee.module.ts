@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CdkDrag, CdkDragDrop, CdkDropList, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Chart } from 'chart.js';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -36,6 +37,7 @@ import { Chart } from 'chart.js';
     SidenavComponent,
     HeaderComponent,
     ProductsComponent,
+    ChatComponent,
     ListsComponent,
 
   ],

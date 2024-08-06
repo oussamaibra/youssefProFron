@@ -30,6 +30,25 @@ export class EmployeeService {
       headers: this.createAuthorizationHeader(),
     });
   }
+
+  getChatByUserId(id: number): Observable<any> {
+    return this.http.get(BASIC_URL + 'api/v1/chat/user/' + id, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getChats(): Observable<any> {
+    return this.http.get(BASIC_URL + 'api/v1/chat', {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  addChat(chat: any): Observable<any> {
+    return this.http.post(BASIC_URL + 'api/v1/chat', chat, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   addTask(task: any): Observable<any> {
     return this.http.post(BASIC_URL + 'api/v1/task', task, {
       headers: this.createAuthorizationHeader(),

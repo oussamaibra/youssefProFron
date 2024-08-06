@@ -6,6 +6,7 @@ import e from 'express';
 import { DashboardComponent } from './modules/employee/components/dashboard/dashboard.component';
 import { ProductsComponent } from './modules/employee/components/products/products.component';
 import { ListsComponent } from './modules/employee/components/lists/lists.component';
+import { ChatComponent } from './modules/employee/components/chat/chat.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "employee", loadChildren: () => import("./modules/employee/employee.module").then(e => e.EmployeeModule) },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'products', component: ProductsComponent},
+  { path: 'chat', component: ChatComponent},
   { path: 'lists', component: ListsComponent},
   { path: '', redirectTo: 'dashboard', pathMatch:'full'},
 ];

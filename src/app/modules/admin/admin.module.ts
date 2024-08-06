@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { ViewProjectDetailsComponent } from './components/view-project-details/view-project-details.component';
+import { ChatAdminComponent } from './components/chat-admin/chat-admin.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ViewProjectDetailsComponent } from './components/view-project-details/v
     DashboardComponent,
     PostProjectComponent,
     UpdateProjectComponent,
-    ViewProjectDetailsComponent
+    ViewProjectDetailsComponent,
+    ChatAdminComponent
   ],
   imports: [
     CommonModule,
