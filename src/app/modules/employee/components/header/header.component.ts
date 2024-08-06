@@ -1,6 +1,8 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { style } from '@angular/animations';
 import { languages, notifications, userItems } from './header-dummy-data';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileComponent } from '../../../../profile/profile.component';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +21,16 @@ export class HeaderComponent implements OnInit{
   notifications = notifications;
   userItems = userItems;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ProfileComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any){
