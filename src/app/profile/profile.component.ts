@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { merge } from 'rxjs';
 import { EmployeeService } from '../modules/employee/services/employee.service';
+import { StorageService } from '../auth/services/storage/storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -42,7 +43,11 @@ export class ProfileComponent {
   }
 
   onSubmit() {
-    console.log('dddddddddddddd', this.formGroup.value);
-    
+    this.service
+      .updateprofile(this.formGroup.value, StorageService.getUser()?.id ? Number(StorageService.getUser()?.id) : 0)
+      .subscribe((res) => {
+        this.user = res;
+        this.formGroup.reset({ name: res?.name, email: res?.email });
+      });
   }
 }
