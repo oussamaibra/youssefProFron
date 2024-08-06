@@ -11,12 +11,18 @@ const BASIC_URL = 'http://localhost:8082/';
 export class EmployeeService {
   constructor(private http: HttpClient) {}
 
-
   getEmployeById(id: string): Observable<any> {
     return this.http.get(BASIC_URL + `api/employee/id`, {
       headers: this.createAuthorizationHeader(),
     });
   }
+
+  updateprofile(profile: any, id: number): Observable<any> {
+    return this.http.put(BASIC_URL + 'api/employee/' + id, profile, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
 
   getEmployeeProjectsById(): Observable<any> {
     return this.http.get(BASIC_URL + 'api/employee/projects', {
@@ -24,7 +30,6 @@ export class EmployeeService {
     });
   }
 
-  
   getTasksByUserId(id: number): Observable<any> {
     return this.http.get(BASIC_URL + 'api/v1/task/user/' + id, {
       headers: this.createAuthorizationHeader(),

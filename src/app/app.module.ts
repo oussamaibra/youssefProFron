@@ -25,9 +25,15 @@ import { HeaderComponent } from './modules/employee/components/header/header.com
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    ProfileComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

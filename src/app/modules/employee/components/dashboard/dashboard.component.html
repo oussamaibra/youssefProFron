@@ -1,137 +1,129 @@
-<h2>Dashboard</h2>
-<div [ngClass]="getClass()">
-    <div class="col-left">
-        <div class="card welcome-card">
-            <div class="card-head welcome-head-container">
-                <div class="col-left">
-                    
-                    <div>Welcome Back !</div>
-                    <p>Angular Dashboard</p>
+<div class="container">
+  <!-- <p>Dashboard</p> -->
 
-                </div>
-                <div class="col-right">
-                    <img [src]="'assets/profile-bg-3.png'" alt="">
-
-                </div>
-
-            </div>
-            <div class="card-body welcome-body-container">
-                <div class="col-left">
-                    <div class="avatar">
-                        <img [src]="'assets/youssef.jpg'" alt="">
-
-                    </div>
-                    <div class="name">Youssef Riahi</div>
-                    <p>Web Developer</p>
-                </div>
-                <div class="col-right">
-                    <div class="performance-container">
-                        <div class="performance">
-                            <div>Performance</div>
-                            <div>80%</div>
-
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar"></div>
-
-                        </div>
-                    </div>
-                    <div class="view-profile">
-                        <button>
-                            View Profile
-                            <i class="far fa-arrow-right"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+  <div class="card welcome-card">
+    <div class="card-head welcome-head-container">
+      <div class="col-left">
+        <div>Welcome Back !</div>
+        <p>Angular Dashboard</p>
+      </div>
+      <div class="col-right">
+        <!-- <img [src]="'assets/profile-bg-3.png'" alt="" width="50" height="50" /> -->
+      </div>
     </div>
+    <div class="card-body welcome-body-container">
+      <div class="col-left">
+        <div class="avatar">
+          <img [src]="'assets/youssef.jpg'" alt="" />
+        </div>
+        <div class="name">{{ user?.name }}</div>
+        <p>{{ user?.userRole }}</p>
+      </div>
+      <div class="col-right">
+        <div class="performance-container">
+          <div class="performance">
+            <div>Performance</div>
+            <div>{{ perfer }}%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+        <div class="view-profile">
+          <button>
+            View Profile
+            <i class="far fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col task-col">
-        <div class="task">
-            <span class="bar completed"></span>
-            <div class="details">
-                <div>Completed</div>
-                <p>6 tasks</p>
-
-            </div>
-            <i class="far fa-pen edit"></i>
-
+      <div class="card">
+        <div class="card-head">Task Stats :</div>
+        <div class="card-body">
+          <canvas id="canvas"> {{ chart }}</canvas>
         </div>
-        <div class="task">
-            <span class="bar active"></span>
-            <div class="details">
-                <div>Active</div>
-                <p>1 task</p>
-
-            </div>
-            <i class="far fa-pen edit"></i>
-
-        </div>
-        <div class="task">
-            <span class="bar new"></span>
-            <div class="details">
-                 <div>Assigned</div>
-                 <p>12 task</p>
-
-             </div>
-        <i class="far fa-pen edit"></i>
-          
-    </div>
-    <button>
-        <i class="far fa-plus"></i>
-        Create New Group </button>
-           
-        </div>
- </div>
-
- <div class="card">
-    <div class="card-head">Lorem ipsum - dashboard</div>
-    <div class="card-body">
-        What is Lorem Ipsum ?
-        Lorem Ipsum is simply dummy text pf the printing and typsetting industry ...
-
-        why do we use it ?
-        It is a long established fact that a reader will be distracted ...
-
-        Where does it come from ?
-        Contrary to popular belief, Lorem Ipsum is not simply random text ...
+      </div>
     </div>
 
- </div>
-
- <br>
- <br>
-
- <div class="card">
-    <div class="card-head">Lorem ipsum - dashboard </div>
-    <div class="card-body">
-        Whats is Lorem Ipsum ?
-        Lorem Ipsum is simply dummy text pf the printing and typsetting industry ...
-
-        why do we use it ?
-        It is a long established fact that a reader will be distracted ...
-
-        Where does it come from ?
-        Contrary to popular belief, Lorem Ipsum is not simply random text ...
-
+    <div class="col task-col">
+      <div class="card">
+        <div class="card-head">Projects Stats :</div>
+        <div class="card-body">
+          <canvas id="canvas2"> {{ chart2 }}</canvas>
+        </div>
+      </div>
     </div>
 
- </div>
+    <div class="col task-col mt">
+      <div class="task">
+        <span class="bar completed"></span>
+        <div class="details">
+          <div>Completed</div>
+          <p>{{ done }} tasks</p>
+        </div>
+      </div>
 
+      <div class="task">
+        <span class="bar active"></span>
+        <div class="details">
+          <div>Pending</div>
+          <p>{{ inprogress }} tasks</p>
+        </div>
+      </div>
+
+      <div class="task">
+        <span class="bar new"></span>
+        <div class="details">
+          <div>To Do</div>
+          <p>{{ tasks }} tasks</p>
+        </div>
+      </div>
+
+      <div class="task">
+        <span class="bar new"></span>
+        <div class="details">
+          <div>Total</div>
+          <p>{{ total }} tasks</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">List Of Projects :</div>
+  </div>
+
+  <div *ngFor="let project of projects">
+    <div class="card">
+      <div class="card-body">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+
+        <div class="info-row">
+          <span class="info-label">Due Date:</span>
+          <span class="info-value">{{
+            project.dueDate | date : "MMM d, y"
+          }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Priority:</span>
+          <span class="info-value">{{ project.priority }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
 
 <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
- <app-header
-[collapsed]="isSideNavCollapsed"
-          [screenWidth]="screenWidth">
-    
-</app-header> 
-<app-body [collapsed]="isSideNavCollapsed"
-          [screenWidth]="screenWidth"
-> </app-body>
-
-
+<app-header [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth">
+</app-header>
+<app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth">
+</app-body>
