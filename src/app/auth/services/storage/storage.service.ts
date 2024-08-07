@@ -1,30 +1,35 @@
 import { Injectable } from '@angular/core';
 
-const TOKEN = "token";
-const USER = "user";
+const TOKEN = 'token';
+const USER = 'user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
-
-  constructor() { }
-  static saveToken(token:string): void {
+  constructor() {}
+  static saveToken(token: string): void {
     window.localStorage.removeItem(TOKEN);
-    window.localStorage.setItem(TOKEN , token);
+    window.localStorage.setItem(TOKEN, token);
   }
 
-  static saveUser(user:any):void{
+  static saveUser(user: any): void {
     window.localStorage.removeItem(USER);
     window.localStorage.setItem(USER, JSON.stringify(user));
   }
 
   static getToken(): string | null {
     if (typeof localStorage !== 'undefined') {
-    return localStorage.getItem(TOKEN)!;
-  }
+      return localStorage.getItem(TOKEN)!;
+    }
     return null;
-    
+  }
+
+  static getlang(): string | null {
+    if (typeof localStorage !== 'undefined') {
+      return JSON.parse(localStorage.getItem('LANG')!);
+    }
+    return null;
   }
 
   static getUser(): any {
@@ -33,35 +38,30 @@ export class StorageService {
 
   static getUserRole(): string {
     const user = this.getUser();
-    if(user == null)
-      return '';
+    if (user == null) return '';
     return user.role;
   }
 
   static isAdminLoggedIn(): boolean {
-    if(this.getToken() === null)
-      return false;
+    if (this.getToken() === null) return false;
     const role: string = this.getUserRole();
-    return role == "ADMIN";
+    return role == 'ADMIN';
   }
 
   static isEmployeeLoggedIn(): boolean {
-    if(this.getToken() === null)
-      return false;
+    if (this.getToken() === null) return false;
     const role: string = this.getUserRole();
-    return role == "EMPLOYEE";
+    return role == 'EMPLOYEE';
   }
 
-  static getUserId():string{
-    const user=this.getUser();
-    if(user == null)
-      return "";
+  static getUserId(): string {
+    const user = this.getUser();
+    if (user == null) return '';
     return user.id;
   }
 
-  static logout():void{
+  static logout(): void {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
-
   }
 }

@@ -79,7 +79,11 @@
   <div class="overlay overlay-language overlay-fall" cdkMenu>
     <ul>
       <li *ngFor="let lang of languages" cdkMenuItem>
-        <img [src]="'assets/flags/' + lang.flag + '.png'" alt="flag" />
+        <img
+          [src]="'assets/flags/' + lang.flag + '.png'"
+          alt="flag"
+          (click)="setlang(lang)"
+        />
         <span>{{ lang.language }}</span>
       </li>
     </ul>

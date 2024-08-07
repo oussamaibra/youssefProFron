@@ -41,6 +41,12 @@ export class HeaderComponent implements OnInit {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
   }
 
+  setlang(lang: any) {
+    console.log('rrrrrrrrrrr', lang);
+    window.localStorage.setItem('LANG', JSON.stringify(lang));
+    this.selectedLanguage = lang;
+  }
+
   getUser() {
     this.service
       .getnotificationByUserId(
@@ -51,14 +57,14 @@ export class HeaderComponent implements OnInit {
           icon: 'far fa-file',
           Subject: 'New Project',
           description: el.description,
-          dueDate:el.dueDate
+          dueDate: el.dueDate,
         }));
       });
   }
 
   ngOnInit(): void {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
-    this.selectedLanguage = this.languages[0];
+    this.selectedLanguage = StorageService.getlang();
     this.getUser();
   }
 
