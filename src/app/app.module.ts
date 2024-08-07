@@ -26,6 +26,14 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ProfileComponent } from './profile/profile.component';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  GoogleSigninButtonModule,
+  GoogleLoginProvider,
+} from '@abacritt/angularx-social-login';
+
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -44,10 +52,31 @@ import { ProfileComponent } from './profile/profile.component';
     MatToolbarModule,
     HttpClientModule,
     EmployeeModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule,
+    OAuthModule.forRoot(),
   ],
   providers: [
     provideHttpClient(withFetch()),
     provideCharts(withDefaultRegisterables()),
+    // {
+    //   provide: 'SocialAuthServiceConfig',
+    //   useValue: {
+    //     autoLogin: false,
+    //     lang: 'en',
+    //     providers: [
+    //       {
+    //         id: GoogleLoginProvider.PROVIDER_ID,
+    //         provider: new GoogleLoginProvider(
+    //           '392241960634-ujof3ugg5kqkugqequdmec4ke67fdme3.apps.googleusercontent.com'
+    //         ),
+    //       },
+    //     ],
+    //     onError: (err) => {
+    //       console.error(err);
+    //     },
+    //   } as SocialAuthServiceConfig,
+    // },
   ],
   bootstrap: [AppComponent],
 })

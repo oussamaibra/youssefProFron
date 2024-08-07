@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
   }
 
   setlang(lang: any) {
-    console.log('rrrrrrrrrrr', lang);
     window.localStorage.setItem('LANG', JSON.stringify(lang));
     this.selectedLanguage = lang;
   }

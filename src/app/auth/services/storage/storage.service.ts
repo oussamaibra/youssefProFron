@@ -16,6 +16,13 @@ export class StorageService {
   static saveUser(user: any): void {
     window.localStorage.removeItem(USER);
     window.localStorage.setItem(USER, JSON.stringify(user));
+    window.localStorage.setItem(
+      'LANG',
+      JSON.stringify({
+        language: 'English',
+        flag: 'us',
+      })
+    );
   }
 
   static getToken(): string | null {
