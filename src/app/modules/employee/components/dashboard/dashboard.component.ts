@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
         })).length;
 
 
-      this.perfer = (this?.done / res?.length) * 100;
+      this.perfer = Number((this?.done / res?.length) * 100).toFixed(2);
 
       this.chart = new Chart('canvas', {
         type: 'line',

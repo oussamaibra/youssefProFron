@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProfileComponent } from '../../../../profile/profile.component';
 import { StorageService } from '../../../../auth/services/storage/storage.service';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../../services/employee.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,10 +19,14 @@ export class HeaderComponent implements OnInit {
   selectedLanguage: any;
 
   languages = languages;
-  notifications = notifications;
+  notifications: any;
   userItems = userItems;
 
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+    private service: EmployeeService
+  ) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(ProfileComponent);
@@ -36,9 +41,25 @@ export class HeaderComponent implements OnInit {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
   }
 
+  getUser() {
+    this.service
+      .getnotificationByUserId(
+        StorageService.getUser()?.id ? Number(StorageService.getUser()?.id) : 0
+      )
+      .subscribe((res) => {
+        this.notifications = res.map((el: any) => ({
+          icon: 'far fa-file',
+          Subject: 'New Project',
+          description: el.description,
+          dueDate:el.dueDate
+        }));
+      });
+  }
+
   ngOnInit(): void {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
     this.selectedLanguage = this.languages[0];
+    this.getUser();
   }
 
   logout() {

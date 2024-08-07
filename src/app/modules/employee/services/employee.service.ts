@@ -17,12 +17,18 @@ export class EmployeeService {
     });
   }
 
+  getnotificationByUserId(id: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/v1/notification/user/${id}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+
   updateprofile(profile: any, id: number): Observable<any> {
     return this.http.put(BASIC_URL + 'api/employee/' + id, profile, {
       headers: this.createAuthorizationHeader(),
     });
   }
-
 
   getEmployeeProjectsById(): Observable<any> {
     return this.http.get(BASIC_URL + 'api/employee/projects', {
